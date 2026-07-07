@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr Ifeanyi | Trade & Technology Architect</title>
+    <meta name="description"
+        content="Portfolio of Mr Ifeanyi (Ugochukwu Ifeanyi Favour) - Connecting physical trade with digital infrastructure. Sourcing exports/imports and building custom AI automation.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --bg-color: #0b0b0d;
+            --panel-color: #151519;
+            --accent-coral: #f2604f;
+            --accent-coral-light: #ff8a73;
+            --accent-cyan: #39d6ec;
+            --text-primary: #f5f4f0;
+            --text-secondary: #9b9a9e;
+            --text-muted: #5e5d61;
+            --font-serif: 'Fraunces', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-fast: all 0.2s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Keyboard Focus Outline */
+        *:focus-visible {
+            outline: 2px solid var(--accent-cyan);
+            outline-offset: 4px;
+        }
+
+        /* Scroll Progress Bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-coral) 0%, var(--accent-cyan) 100%);
+            z-index: 1000;
+        }
+
+        /* Typography Utilities */
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-serif);
+            font-weight: 300;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 900;
+            background: rgba(11, 11, 13, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .logo span {
+            color: var(--accent-cyan);
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition-fast);
+            position: relative;
+            padding: 0.25rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent-coral);
+            transition: var(--transition-fast);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 30px;
+            height: 24px;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-primary);
+            position: absolute;
+            transition: var(--transition-fast);
+        }
+
+        .menu-toggle span:nth-child(1) {
+            top: 4px;
+        }
+
+        .menu-toggle span:nth-child(2) {
+            top: 11px;
+        }
+
+        .menu-toggle span:nth-child(3) {
+            top: 18px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 9rem 2rem 5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            min-height: 90vh;
+            align-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .hero {
+                grid-template-columns: 1.2fr 1fr 1fr;
+                gap: 4rem;
+                padding-top: 11rem;
+            }
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .eyebrow {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .headline {
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .headline span {
+            color: var(--accent-coral);
+            font-weight: 500;
+        }
+
+        .hero-role {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 420px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Pill CTA Button */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--text-primary);
+            color: var(--bg-color);
+            padding: 0.75rem 1.75rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            gap: 1rem;
+            width: fit-content;
+            transition: var(--transition-smooth);
+            border: 1px solid var(--text-primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .cta-button .arrow-circle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .cta-button:hover .arrow-circle {
+            background-color: var(--text-primary);
+            color: var(--bg-color);
+            transform: rotate(45deg);
+        }
+
+        /* Social Icons */
+        .social-column {
+            display: flex;
+            gap: 1.25rem;
+            margin-top: 3rem;
+            align-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .social-column {
+                flex-direction: column;
+                position: absolute;
+                bottom: 3rem;
+                left: 2rem;
+                margin-top: 0;
+            }
+        }
+
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .social-icon:hover {
+            color: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(57, 214, 236, 0.2);
+        }
+
+        /* Center Column: Visual Anchor */
+        .hero-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .visual-anchor {
+            width: 100%;
+            max-width: 380px;
+            height: 480px;
+            background: linear-gradient(135deg, #18181f 0%, #0d0d10 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .anchor-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.85;
+            transition: var(--transition-smooth);
+            z-index: 1;
+        }
+
+        .visual-anchor:hover .anchor-image {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .anchor-monogram {
+            font-family: var(--font-serif);
+            font-size: 11rem;
+            font-weight: 200;
+            color: rgba(255, 255, 255, 0.025);
+            user-select: none;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.005) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: absolute;
+            z-index: 0;
+        }
+
+        /* Decorative Rings SVG overlay */
+        .decorative-rings {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 160px;
+            height: 120px;
+            pointer-events: none;
+            animation: ringFloat 8s ease-in-out infinite alternate;
+            z-index: 2;
+        }
+
+        .ring-cyan {
+            fill: none;
+            stroke: var(--accent-cyan);
+            stroke-width: 1.5;
+            opacity: 0.85;
+        }
+
+        .ring-coral {
+            fill: none;
+            stroke: var(--accent-coral);
+            stroke-width: 1.5;
+            opacity: 0.85;
+        }
+
+        .decorative-dot {
+            position: absolute;
+            bottom: 50px;
+            left: 50px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--accent-cyan);
+            box-shadow: 0 0 15px var(--accent-cyan);
+            z-index: 2;
+        }
+
+        @keyframes ringFloat {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(-12px) rotate(5deg);
+            }
+        }
+
+        /* Hero Right Column: Stat Panel */
+        .hero-right {
+            background-color: var(--panel-color);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            max-width: 380px;
+            justify-self: center;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-right {
+                justify-self: stretch;
+                height: 480px;
+            }
+        }
+
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .stat-title {
+            font-size: 1.6rem;
+            line-height: 1.3;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .stat-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .stat-link {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--accent-coral);
+            padding-bottom: 0.25rem;
+            transition: var(--transition-fast);
+            width: fit-content;
+        }
+
+        .stat-link:hover {
+            color: var(--accent-coral-light);
+            border-color: transparent;
+            padding-left: 0.25rem;
+        }
+
+        /* Floating Chat Button */
+        #floating-chat {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 800;
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--panel-color);
+            color: var(--text-primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            gap: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            transition: var(--transition-smooth);
+        }
+
+        #floating-chat:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-coral);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #39ec8c;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #39ec8c;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: var(--panel-color);
+            padding: 7rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 3.5rem;
+        }
+
+        .section-tag {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            color: var(--accent-coral);
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.2;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1.5fr 1fr;
+                gap: 5rem;
+            }
+        }
+
+        .about-body {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+        }
+
+        .about-body p {
+            margin-bottom: 2rem;
+        }
+
+        /* Editorial Drop Cap */
+        .drop-cap::first-letter {
+            font-family: var(--font-serif);
+            font-size: 4.8rem;
+            float: left;
+            line-height: 0.8;
+            margin-right: 0.75rem;
+            margin-top: 0.2rem;
+            color: var(--accent-coral);
+            font-weight: 400;
+        }
+
+        .about-side {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-block {
+            border-left: 2px solid rgba(255, 255, 255, 0.05);
+            padding-left: 1.5rem;
+        }
+
+        .info-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-value {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        /* Ventures Section */
+        .ventures-section {
+            padding: 7rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .venture-list {
+            margin-top: 4rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .venture-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            padding: 2.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            gap: 1.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        @media (min-width: 768px) {
+            .venture-row {
+                grid-template-columns: 1fr 2fr 1fr;
+                align-items: center;
+                gap: 3rem;
+            }
+        }
+
+        .venture-row:hover {
+            border-bottom-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .venture-category {
+            display: flex;
+            align-items: center;
+        }
+
+        .category-tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 100px;
+            background-color: rgba(57, 214, 236, 0.06);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(57, 214, 236, 0.15);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .venture-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+            font-weight: 400;
+        }
+
+        .venture-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            max-width: 600px;
+        }
+
+        .venture-action {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        @media (min-width: 768px) {
+            .venture-action {
+                justify-content: flex-end;
+            }
+        }
+
+        .venture-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .venture-row:hover .venture-link {
+            background-color: var(--text-primary);
+            color: var(--bg-color);
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--bg-color);
+            padding: 7rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        @media (min-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: 1.2fr 1.8fr;
+            }
+        }
+
+        .contact-left {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        /* Contact Cards Grid */
+        .cards-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-card {
+            background-color: var(--panel-color);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .card-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent-coral);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .card-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition-fast);
+            word-break: break-all;
+        }
+
+        .card-link:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Info Strip */
+        .info-strip {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .strip-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .strip-label {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .strip-value {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .strip-value.link:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Contact Form */
+        .contact-right {
+            background-color: var(--panel-color);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            padding: 2.5rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .form-input,
+        .form-textarea {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            padding: 0.9rem 1.1rem;
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            transition: var(--transition-fast);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            background-color: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 0 10px rgba(57, 214, 236, 0.05);
+        }
+
+        .form-textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        /* Honeypot field */
+        .hidden-field {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        .form-submit-btn {
+            background-color: var(--accent-coral);
+            color: var(--text-primary);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            box-shadow: 0 5px 20px rgba(242, 96, 79, 0.25);
+        }
+
+        .form-submit-btn:hover {
+            background-color: var(--accent-coral-light);
+            transform: translateY(-2px);
+        }
+
+        .form-submit-btn:disabled {
+            background-color: var(--text-muted);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .form-status {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .form-status.success {
+            display: block;
+            color: #39ec8c;
+        }
+
+        .form-status.error {
+            display: block;
+            color: var(--accent-coral);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 3rem 2rem;
+            background-color: var(--bg-color);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-container {
+                flex-direction: row;
+            }
+        }
+
+        .footer-left {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-right {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        /* Animations & Intersection Observer Reveals */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Side Navigation overlay */
+        @media (max-width: 767px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: var(--panel-color);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2.5rem;
+                padding: 2rem;
+                transition: var(--transition-smooth);
+                border-left: 1px solid rgba(255, 255, 255, 0.05);
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+        }
+
+        /* Left-padding shift for ventures list row hover */
+        @media (min-width: 768px) {
+            .venture-row {
+                transition: padding-left 0.3s ease, border-bottom-color 0.3s ease;
+            }
+
+            .venture-row:hover {
+                padding-left: 1.5rem;
+            }
+        }
+
+        /* Reduced Motion Accessibility Settings */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto !important;
+            }
+
+            *,
+            .reveal,
+            .venture-row,
+            .cta-button,
+            .social-icon,
+            .stat-link,
+            #floating-chat,
+            .form-submit-btn,
+            .venture-link {
+                transition: none !important;
+                animation: none !important;
+                transform: none !important;
+            }
+
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .decorative-rings {
+                animation: none !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#hero" class="logo">
+                Mr Ifeanyi<span>.</span>
+            </a>
+
+            <nav class="nav-links" id="nav-menu">
+                <a href="#about" class="nav-item">About</a>
+                <a href="#ventures" class="nav-item">Ventures</a>
+                <a href="#contact" class="nav-item">Contact</a>
+            </nav>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false"
+                aria-controls="nav-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <!-- Left Column -->
+            <div class="hero-left">
+                <div class="eyebrow">Hi,</div>
+                <h1 class="headline">I am <span>Mr Ifeanyi</span></h1>
+                <p class="hero-role">He moves goods across borders and systems across bottlenecks — connecting physical
+                    trade with digital infrastructure.</p>
+                <a href="#contact" class="cta-button">
+                    Let's Connect
+                    <span class="arrow-circle" aria-hidden="true">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- Social Column -->
+                <div class="social-column">
+                    <a href="https://github.com" class="social-icon" aria-label="GitHub">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com" class="social-icon" aria-label="X / Twitter">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Center Column: Visual Anchor -->
+            <div class="hero-center">
+                <div class="visual-anchor">
+                    <img src="mr-ifeanyi.jpg" alt="Mr Ifeanyi" class="anchor-image" onerror="this.style.display='none'">
+                    <div class="anchor-monogram">MI</div>
+                    <!-- Interlocking cyan and coral rings SVG overlay -->
+                    <svg class="decorative-rings" viewBox="0 0 160 120">
+                        <!-- Cyan Ring -->
+                        <ellipse cx="65" cy="55" rx="42" ry="42" class="ring-cyan" />
+                        <!-- Coral Ring -->
+                        <ellipse cx="95" cy="65" rx="42" ry="42" class="ring-coral" />
+                    </svg>
+                    <!-- Solid cyan dot lower down -->
+                    <div class="decorative-dot"></div>
+                </div>
+            </div>
+
+            <!-- Right Column: Stat Panel -->
+            <div class="hero-right">
+                <div>
+                    <span class="stat-label">Expert On</span>
+                    <h2 class="stat-title">Nigeria-Based Trade & AI Architect</h2>
+                    <p class="stat-desc">Fusing cross-border logistics with tailored tech infrastructure to streamline
+                        workflows and eliminate operational bottlenecks.</p>
+                </div>
+                <a href="#ventures" class="stat-link">
+                    Explore Ventures
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 6H11M11 6L6 1M11 6L6 11" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- Floating Chat Button -->
+        <a href="#contact" id="floating-chat" aria-label="Scroll to contact">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            Let's Chat
+            <span class="status-dot"></span>
+        </a>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="about-container">
+                <div class="section-header reveal">
+                    <span class="section-tag">About Me</span>
+                    <h2 class="section-title">The Intersection of Trade and Tech</h2>
+                </div>
+                <div class="about-grid">
+                    <div class="about-body reveal">
+                        <p class="drop-cap">Ugochukwu Ifeanyi Favour, known professionally as Mr Ifeanyi, operates at
+                            the vital nexus of physical commerce and modern automation. Based in Nigeria, he facilitates
+                            the flow of commodities and technical systems across regions and organizations.</p>
+                        <p>With one foot firmly in logistics and the other in technology, he operates Alteon Exports,
+                            coordinating high-volume raw materials out of Nigeria and China sourcing lanes.
+                            Simultaneously, through Kairos AI Systems, he delivers custom web developments and bespoke
+                            AI automations that resolve complex administrative bottlenecks.</p>
+                    </div>
+                    <div class="about-side reveal">
+                        <div class="info-block">
+                            <div class="info-label">Location</div>
+                            <div class="info-value">Nigeria</div>
+                        </div>
+                        <div class="info-block">
+                            <div class="info-label">Focus Areas</div>
+                            <div class="info-value">Commodities Trade, China Import Logistics, AI Workflows & Full-Stack
+                                Development</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ventures Section -->
+        <section id="ventures" class="ventures-section">
+            <div class="section-header reveal">
+                <span class="section-tag">Ventures</span>
+                <h2 class="section-title">Selected Enterprises</h2>
+            </div>
+
+            <div class="venture-list">
+                <!-- Venture 1 -->
+                <div class="venture-row reveal">
+                    <div class="venture-category">
+                        <span class="category-tag">Trade / Export</span>
+                    </div>
+                    <div class="venture-content">
+                        <h3>Alteon Exports (Export)</h3>
+                        <p>Specializing in the sourcing and logistics of high-quality raw materials from Nigeria.
+                            Delivering optimized supply chains, bulk procurement validation, and premium service for
+                            international partners.</p>
+                    </div>
+                    <div class="venture-action">
+                        <a href="mailto:alteonexports@gmail.com?subject=Export Inquiry" class="venture-link"
+                            aria-label="Email Alteon Exports regarding Exports">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Venture 2 -->
+                <div class="venture-row reveal">
+                    <div class="venture-category">
+                        <span class="category-tag">Trade / Import</span>
+                    </div>
+                    <div class="venture-content">
+                        <h3>Alteon Exports (Import)</h3>
+                        <p>Providing direct bulk importing and logistics integration from Chinese suppliers at
+                            competitive wholesale pricing. Eradicating high broker premiums for local companies and
+                            entrepreneurs.</p>
+                    </div>
+                    <div class="venture-action">
+                        <a href="mailto:alteonexports@gmail.com?subject=Import Inquiry" class="venture-link"
+                            aria-label="Email Alteon Exports regarding Imports">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Venture 3 -->
+                <div class="venture-row reveal">
+                    <div class="venture-category">
+                        <span class="category-tag">Technology / AI</span>
+                    </div>
+                    <div class="venture-content">
+                        <h3>Kairos AI Systems</h3>
+                        <p>Building targeted artificial intelligence automations, API integrations, and robust
+                            end-to-end custom web and mobile web applications designed to streamline modern corporate
+                            architectures.</p>
+                    </div>
+                    <div class="venture-action">
+                        <a href="mailto:kairosaisystems@gmail.com?subject=AI / Tech Inquiry" class="venture-link"
+                            aria-label="Email Kairos AI Systems">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="contact-container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Contact</span>
+                    <h2 class="section-title">Initiate a Conversation</h2>
+                </div>
+
+                <div class="contact-grid">
+                    <!-- Left Columns: Cards & Info -->
+                    <div class="contact-left">
+                        <div class="cards-container">
+                            <!-- Card 1 -->
+                            <div class="contact-card reveal">
+                                <span class="card-label">General & Personal</span>
+                                <h3 class="card-title">Mr Ifeanyi</h3>
+                                <a href="mailto:Mrifeanyi.mi@gmail.com" class="card-link">Mrifeanyi.mi@gmail.com</a>
+                            </div>
+                            <!-- Card 2 -->
+                            <div class="contact-card reveal">
+                                <span class="card-label">Trade & Sourcing</span>
+                                <h3 class="card-title">Alteon Exports</h3>
+                                <a href="mailto:alteonexports@gmail.com" class="card-link">alteonexports@gmail.com</a>
+                            </div>
+                            <!-- Card 3 -->
+                            <div class="contact-card reveal">
+                                <span class="card-label">Technology & AI</span>
+                                <h3 class="card-title">Kairos AI Systems</h3>
+                                <a href="mailto:kairosaisystems@gmail.com"
+                                    class="card-link">kairosaisystems@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <!-- Info Strip -->
+                        <div class="info-strip reveal">
+                            <div class="strip-item">
+                                <span class="strip-label">WhatsApp / Phone</span>
+                                <a href="tel:+2349020468524" class="strip-value link">+234 902 046 8524</a>
+                            </div>
+                            <div class="strip-item">
+                                <span class="strip-label">Location</span>
+                                <span class="strip-value">Nigeria</span>
+                            </div>
+                            <div class="strip-item">
+                                <span class="strip-label">LinkedIn</span>
+                                <span class="strip-value">Favour Ugochukwu</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Form -->
+                    <div class="contact-right reveal">
+                        <!-- SETUP STEP NOTE: Insert Formspree Endpoint ID in the action attribute below -->
+                        <form id="contact-form" action="https://formspree.io/f/YOUR_ENDPOINT_ID" method="POST"
+                            class="contact-form">
+                            <!-- Honeypot field (Spam protection) -->
+                            <div class="form-group hidden-field">
+                                <label for="honeypot">Leave this blank</label>
+                                <input type="text" name="_honey" id="honeypot" tabindex="-1" autocomplete="off">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" class="form-label">Your Name *</label>
+                                <input type="text" id="name" name="name" class="form-input" required
+                                    placeholder="John Doe">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="form-label">Your Email *</label>
+                                <input type="email" id="email" name="email" class="form-input" required
+                                    placeholder="john@example.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject" class="form-label">Subject</label>
+                                <input type="text" id="subject" name="subject" class="form-input"
+                                    placeholder="Collaboration / Partnership">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message" class="form-label">Your Message *</label>
+                                <textarea id="message" name="message" class="form-textarea" required
+                                    placeholder="Hello Mr Ifeanyi..."></textarea>
+                            </div>
+
+                            <button type="submit" id="form-submit" class="form-submit-btn">
+                                Send Message
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </button>
+
+                            <div id="form-status" class="form-status" role="alert"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                &copy; <span id="copyright-year">2026</span> Mr Ifeanyi. All rights reserved.
+            </div>
+            <div class="footer-right">
+                <span>Alteon Exports</span>
+                <span>Kairos AI Systems</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Set dynamic copyright year
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+        // Responsive Hamburger Nav Menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking nav item
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Scroll Progress Bar Logic
+        window.addEventListener('scroll', () => {
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReduced) return;
+
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + '%';
+        });
+
+        // Intersection Observer for Scroll Reveals
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealCallback = (entries, observer) => {
+            // Check for reduced motion preference
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (prefersReduced) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                        return;
+                    }
+
+                    // Stagger sibling elements if they are cards or rows
+                    const parent = entry.target.parentElement;
+                    const siblings = Array.from(parent.querySelectorAll('.reveal'));
+                    const isStaggeredGroup = siblings.length > 1 && (
+                        entry.target.classList.contains('contact-card') ||
+                        entry.target.classList.contains('venture-row')
+                    );
+
+                    if (isStaggeredGroup) {
+                        const index = siblings.indexOf(entry.target);
+                        setTimeout(() => {
+                            entry.target.classList.add('revealed');
+                        }, index * 120);
+                    } else {
+                        entry.target.classList.add('revealed');
+                    }
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, {
+            root: null,
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => {
+            // If prefers reduced motion is set, reveal immediately without observing
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                el.classList.add('revealed');
+            } else {
+                revealObserver.observe(el);
+            }
+        });
+
+        // Formspree AJAX Form Handling
+        const contactForm = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('form-submit');
+        const formStatus = document.getElementById('form-status');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Honeypot spam check
+            const honey = document.getElementById('honeypot').value;
+            if (honey) {
+                // Silently drop
+                formStatus.className = 'form-status success';
+                formStatus.textContent = 'Message sent successfully!';
+                contactForm.reset();
+                return;
+            }
+
+            const actionUrl = contactForm.getAttribute('action');
+            if (actionUrl.includes('YOUR_ENDPOINT_ID')) {
+                formStatus.className = 'form-status error';
+                formStatus.textContent = 'Error: The site owner has not set up the Formspree endpoint ID yet. Please contact via direct email.';
+                return;
+            }
+
+            submitBtn.disabled = true;
+            const originalBtnContent = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'Sending... <span class="status-dot"></span>';
+            formStatus.className = 'form-status';
+            formStatus.textContent = '';
+
+            try {
+                const formData = new FormData(contactForm);
+                const response = await fetch(actionUrl, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    formStatus.className = 'form-status success';
+                    formStatus.textContent = 'Message sent successfully!';
+                    contactForm.reset();
+                } else {
+                    const data = await response.json();
+                    if (data && data.errors) {
+                        formStatus.textContent = data.errors.map(error => error.message).join(', ');
+                    } else {
+                        formStatus.textContent = 'Oops! There was a problem submitting your form.';
+                    }
+                    formStatus.className = 'form-status error';
+                }
+            } catch (error) {
+                formStatus.className = 'form-status error';
+                formStatus.textContent = 'Oops! There was a network error. Please try again or email directly.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnContent;
+            }
+        });
+
+        // Accessibility preference listener
+        window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', () => {
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReduced) {
+                revealElements.forEach(el => el.classList.add('revealed'));
+                document.getElementById('scroll-progress').style.width = '0%';
+            }
+        });
+    </script>
+</body>
+
+</html>
