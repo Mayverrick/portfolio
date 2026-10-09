@@ -830,7 +830,7 @@
             padding: 0.9rem 1.1rem;
             color: var(--text-primary);
             font-family: var(--font-sans);
-            font-size: 0.95rem;
+            font-size: 1rem;
             transition: var(--transition-fast);
         }
 
@@ -949,14 +949,22 @@
             transform: translateY(0);
         }
 
-        /* Mobile Side Navigation overlay */
+        /* Mobile Side Navigation & Responsive Layout Adjustments */
         @media (max-width: 767px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-container {
+                padding: 1.1rem 1.25rem;
+            }
+
             .nav-links {
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 75%;
-                max-width: 300px;
+                width: 80%;
+                max-width: 320px;
                 height: 100vh;
                 background-color: var(--panel-color);
                 flex-direction: column;
@@ -964,12 +972,88 @@
                 gap: 2.5rem;
                 padding: 2rem;
                 transition: var(--transition-smooth);
-                border-left: 1px solid rgba(255, 255, 255, 0.05);
-                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+                border-left: 1px solid rgba(255, 255, 255, 0.08);
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
             }
 
             .nav-links.active {
                 right: 0;
+            }
+
+            .hero {
+                padding: 7rem 1.25rem 3rem;
+                min-height: auto;
+                gap: 2.5rem;
+            }
+
+            .headline {
+                font-size: clamp(2rem, 7vw, 3.2rem);
+            }
+
+            .hero-role {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .visual-anchor {
+                height: 360px;
+                max-width: 100%;
+            }
+
+            .anchor-monogram {
+                font-size: 8rem;
+            }
+
+            .hero-right {
+                max-width: 100%;
+                padding: 1.75rem 1.25rem;
+            }
+
+            .about-section,
+            .ventures-section,
+            .contact-section {
+                padding: 4.5rem 1.25rem;
+            }
+
+            .about-body {
+                font-size: 1.05rem;
+            }
+
+            .drop-cap::first-letter {
+                font-size: 3.8rem;
+            }
+
+            .contact-grid {
+                gap: 2.5rem;
+                margin-top: 2.5rem;
+            }
+
+            .contact-right {
+                padding: 1.5rem 1.25rem;
+            }
+
+            #floating-chat {
+                bottom: 1.25rem;
+                right: 1.25rem;
+                padding: 0.7rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            footer {
+                padding: 2.5rem 1.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .strip-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.35rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                justify-content: center;
             }
         }
 
@@ -1047,10 +1131,8 @@
         <section id="hero" class="hero">
             <!-- Left Column -->
             <div class="hero-left">
-                <div class="eyebrow">Hi,</div>
-                <h1 class="headline">I am <span>Mr Ifeanyi</span></h1>
-                <p class="hero-role">He moves goods across borders and systems across bottlenecks — connecting physical
-                    trade with digital infrastructure.</p>
+                <h1 class="headline">I build bridges between<br><span>global commerce and technology.</span></h1>
+                <p class="hero-role">Helping businesses move products, simplify operations, and turn complex challenges into practical solutions.</p>
                 <a href="#contact" class="cta-button">
                     Let's Connect
                     <span class="arrow-circle" aria-hidden="true">
@@ -1118,13 +1200,11 @@
                 </div>
                 <div class="about-grid">
                     <div class="about-body reveal">
-                        <p class="drop-cap">Ugochukwu Ifeanyi Favour, known professionally as Mr Ifeanyi, operates at
-                            the vital nexus of physical commerce and modern automation. Based in Nigeria, he facilitates
-                            the flow of commodities and technical systems across regions and organizations.</p>
-                        <p>With one foot firmly in logistics and the other in technology, he operates Alteon Exports,
-                            coordinating high-volume raw materials out of Nigeria and China sourcing lanes.
-                            Simultaneously, through Kairos AI Systems, he delivers custom web developments and bespoke
-                            AI automations that resolve complex administrative bottlenecks.</p>
+                        <p class="drop-cap">I’m Favour Ifeanyi Ugochukwu, known professionally as Mr Ifeanyi. Based in Nigeria, I work at the intersection of international trade, business operations, and technology, building practical connections between markets, people, and digital systems.</p>
+                        <p>Through Alteon Exports, I facilitate the sourcing and export of African raw materials while helping businesses navigate international procurement and connect with supply opportunities. My focus is on building dependable trade relationships through clear communication, responsible sourcing, and a commitment to quality.</p>
+                        <p>Through Kairos AI Systems, I help businesses solve operational challenges through custom software development, web applications, and AI-powered automation. From improving digital experiences to reducing repetitive work and streamlining business processes, the goal is simple: build technology that solves real problems and creates measurable value.</p>
+                        <p>My work is guided by a straightforward belief: business should move with less friction, technology should solve meaningful problems, and opportunities should not be limited by borders.</p>
+                        <p>Whether I’m facilitating a trade transaction, developing a digital solution, or exploring a better way to solve a business challenge, I bring a practical mindset, a commitment to execution, and a long-term view of growth.</p>
                     </div>
                     <div class="about-side reveal">
                         <div class="info-block">
@@ -1359,6 +1439,15 @@
                 menuToggle.classList.remove('active');
                 navMenu.classList.remove('active');
             });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
         });
 
         // Scroll Progress Bar Logic
