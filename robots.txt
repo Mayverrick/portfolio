@@ -1,0 +1,21 @@
+# ==============================================================================
+# Hardened robots.txt
+# ==============================================================================
+
+User-agent: *
+Allow: /
+Allow: /style.css
+Allow: /main.js
+Allow: /mr-ifeanyi.jpg
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /.*
+Disallow: /*?*
+Disallow: /private/
+Disallow: /staging/
+
+# Crawl-delay for aggressive automated crawlers
+Crawl-delay: 5
+
+# Security Contact
+# Reference: /.well-known/security.txt

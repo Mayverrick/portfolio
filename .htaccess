@@ -1,0 +1,64 @@
+# ==============================================================================
+# Apache 2.4+ Military-Grade Web Security & Hardening Configuration (.htaccess)
+# ==============================================================================
+
+# Disable directory browsing & file enumeration
+Options -Indexes -MultiViews
+
+# Disable server signature disclosure
+ServerSignature Off
+
+# 1. Force HTTPS Redirection
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# 2. Block direct access to hidden files and version control (.git, .env, etc.)
+<FilesMatch "^\.">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# 3. High-Assurance HTTP Security Headers
+<IfModule mod_headers.c>
+    # Enforce HTTPS with HSTS (2 years + subdomains + preload)
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+
+    # Anti-Clickjacking
+    Header always set X-Frame-Options "DENY"
+
+    # Anti-MIME Sniffing
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Modern XSS filter retirement (prevents side-channel leaks)
+    Header always set X-XSS-Protection "0"
+
+    # Referrer privacy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Device & Hardware isolation
+    Header always set Permissions-Policy "accelerometer=(), autoplay=(), camera=(), encrypted-media=(), fullscreen=(self), geolocation=(), gyroscope=(), interest-cohort=(), magnetometer=(), microphone=(), midi=(), payment=(), sync-xhr=(), usb=(), xr-spatial-tracking=()"
+
+    # Content Security Policy Level 3
+    Header always set Content-Security-Policy "default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests;"
+
+    # Cross-Origin Policies
+    Header always set Cross-Origin-Opener-Policy "same-origin"
+    Header always set Cross-Origin-Resource-Policy "same-origin"
+</IfModule>
+
+# 4. Correct MIME Types
+<IfModule mod_mime.c>
+    AddType text/html .html
+    AddType text/css .css
+    AddType application/javascript .js
+    AddType image/jpeg .jpg .jpeg
+    AddType image/svg+xml .svg
+</IfModule>

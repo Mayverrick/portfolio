@@ -1,0 +1,10 @@
+# ==============================================================================
+# RFC 9116 Vulnerability Disclosure & Security Policy (security.txt)
+# ==============================================================================
+
+Contact: mailto:Mrifeanyi.mi@gmail.com
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://mayverrick.github.io/portfolio/.well-known/security.txt
+Policy: https://github.com/Mayverrick/portfolio/blob/main/SECURITY.md
+Acknowledgments: https://github.com/Mayverrick/portfolio

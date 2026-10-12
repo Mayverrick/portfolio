@@ -1,0 +1,43 @@
+name: "Security Audit & Integrity Scan"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  security-audit:
+    name: "Static Security & Secret Scan"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout Code"
+        uses: actions/checkout@v4
+
+      - name: "Verify CSP and Security Headers Presence"
+        run: |
+          echo "Verifying Content Security Policy presence in index.html..."
+          grep -q "Content-Security-Policy" index.html || exit 1
+          grep -q "X-Content-Type-Options" index.html || exit 1
+          grep -q "Permissions-Policy" index.html || exit 1
+          echo "Verifying universal headers configs..."
+          test -f _headers || exit 1
+          test -f vercel.json || exit 1
+          test -f .htaccess || exit 1
+          test -f nginx.conf || exit 1
+          test -f .well-known/security.txt || exit 1
+          echo "All security verification assertions passed!"
+
+      - name: "Secret & Token Leak Scanner"
+        run: |
+          echo "Scanning for accidental token or private key commitments..."
+          if grep -rnEI '(BEGIN PRIVATE KEY|AKIA[0-9A-Z]{16}|ghp_[0-9a-zA-Z]{36})' . --exclude-dir=.git; then
+            echo "ALERT: Sensitive pattern found in codebase!"
+            exit 1
+          fi
+          echo "No hardcoded credentials detected."

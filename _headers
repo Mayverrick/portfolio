@@ -1,0 +1,45 @@
+# ==============================================================================
+# Security Headers Configuration (Cloudflare Pages & Netlify)
+# Level: High-Assurance / Enterprise Defense-in-Depth
+# ==============================================================================
+
+/*
+  # Enforce TLS/HTTPS with HSTS (2 years + includeSubDomains + HSTS Preload)
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+  # Prevent Clickjacking and UI redressing
+  X-Frame-Options: DENY
+
+  # Prevent MIME type sniffing
+  X-Content-Type-Options: nosniff
+
+  # Disable legacy buggy browser XSS filter to prevent side-channel leaks
+  X-XSS-Protection: 0
+
+  # Protect referrer data across cross-origin requests
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Hardware and Sensor Permission isolation
+  Permissions-Policy: accelerometer=(), autoplay=(), camera=(), encrypted-media=(), fullscreen=(self), geolocation=(), gyroscope=(), interest-cohort=(), magnetometer=(), microphone=(), midi=(), payment=(), sync-xhr=(), usb=(), xr-spatial-tracking=()
+
+  # Content Security Policy Level 3 (Zero inline scripts, whitelisted external resources)
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests;
+
+  # Cross-Origin Isolation Policies
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+
+  # Document caching
+  Cache-Control: public, max-age=0, must-revalidate
+
+/style.css
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+/main.js
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+/mr-ifeanyi.jpg
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
